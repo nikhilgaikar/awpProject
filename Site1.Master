@@ -22,15 +22,15 @@
     <link href="css/sidebar.css" rel="stylesheet" type="text/css" />
     
     <style>
-        /* {
+         {
             font-family: 'Inter', sans-serif !important;
         }
 
-        /* Main content area */
+        /*/* Main content area */
         .main-content {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensure it takes the full viewport height */
+            min-height: 100vh; 
             margin-left: 250px;
             transition: margin-left 0.3s ease-in-out;
             padding: 20px;
@@ -40,13 +40,12 @@
             margin-left: 70px;
         }
 
-        /* Ensure content wrapper grows and is scrollable */
         .content-wrapper {
             flex-grow: 1;
-            overflow-y: auto; /* Enables scrolling */
+            overflow-y: auto; 
         }
 
-        /* Make task list scrollable */
+        /* Scrollable task list */
         .task-container {
             max-height: calc(100vh - 200px); /* Prevents overlapping with footer */
             overflow-y: auto;
@@ -67,14 +66,31 @@
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
-        /* Footer - No more overlapping */
+        .logo {
+            display: flex;
+            align-items: center; 
+            gap: 10px; 
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span {
+            font-size: 1.8rem;  
+            font-weight: bold;  
+            color: #343a40;     
+            letter-spacing: 1px; 
+        }
+
+        /* Footer */
         .footer {
-            position: relative; /* Removed absolute positioning */
+            position: relative; 
             width: 100%;
             border-top: 1px solid #ddd;
             text-align: center;
             padding: 10px;
-            margin-top: auto; /* Pushes footer down when content is short */
+            margin-top: auto; 
         }
 
         /* Sidebar with gradient background */
@@ -88,7 +104,14 @@
         }
         #sidebar .nav-link i {
             color: white !important;
-}
+        }
+        /* Highlight active page */
+        .nav-link.active-link {
+            background: #252e2f89 !important; 
+            color: #ffffff !important; 
+            border-radius: 5px;
+            font-weight: bold !important; 
+        }
 
     </style>
 
@@ -133,9 +156,9 @@
                     <asp:Label ID="lblUsername" runat="server" Text=""></asp:Label>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Profile.aspx">Profile</a></li>
-                    <li><a class="dropdown-item" href="Homepage.html">Logout</a></li>
+                    <li><asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-item" OnClick="Logout_Click">Logout</asp:LinkButton></li>
                 </ul>
+
             </div>
 
             </header>
@@ -157,11 +180,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+
+        //collapsible feature for sidebar
         $(document).ready(function () {
             $("#toggleSidebar").click(function () {
                 $("#sidebar").toggleClass("collapsed");
                 $(".main-content").toggleClass("collapsed");
             });
+        });
+
+        //Highlight active page
+        $(".nav-link").each(function () {
+            if (this.href === window.location.href) {
+                $(this).addClass("active-link");
+            }
         });
     </script>
 </body>

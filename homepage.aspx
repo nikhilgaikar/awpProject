@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homepage.aspx.cs" Inherits="awpProject.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homepage.aspx.cs" Inherits="awpProject.homepage" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
         <div class="window">
             <form>
                 <h3 class="text-center">Haven't registered?</h3>              
-                <a href="signup.aspx">
+                <a href="Signup.aspx">
                     <button type="button" class="signup-btn">Sign Up</button>
                 </a>
                 <h3 class="text-center">Already have an account?</h3>

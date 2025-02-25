@@ -11,7 +11,17 @@ namespace awpProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["Username"] != null)
+                {
+                    username.Text = Session["Username"].ToString(); // Set username from session
+                }
+                else
+                {
+                    username.Text = "Guest"; // Default text if no session exists
+                }
+            }
         }
     }
 }

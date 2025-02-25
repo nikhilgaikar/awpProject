@@ -23,5 +23,16 @@ namespace awpProject
                 }
             }
         }
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            
+            Session.Clear(); 
+            Session.Abandon();
+
+
+            Response.Redirect("homepage.aspx");
+        }
+
+
     }
 }

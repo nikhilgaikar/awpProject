@@ -11,7 +11,7 @@ namespace awpProject
 {
 
 
-    public partial class WebForm1
+    public partial class homepage
     {
     }
 }
