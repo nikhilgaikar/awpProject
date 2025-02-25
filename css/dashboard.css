@@ -1,0 +1,91 @@
+﻿﻿ /* Center content and ensure cards stay responsive */
+.dashboard-container {
+    display: flex;
+    justify-content: center; /* Centers the cards */
+    width: 100%;
+}
+
+/* Main cards container */
+.cards {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+    justify-content: center; /* Centers the cards */
+    gap: 20px; /* Adds space between the cards */
+    max-width: 100%;
+    width: 100%;
+    padding-top: 85px;
+}
+
+    /* Increase card size */
+    .cards .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        height: 150px; /* Increased height */
+        width: 300px; /* Increased width */
+        border-radius: 15px;
+        color: black;
+        cursor: pointer;
+        transition: 400ms;
+        padding: 15px;
+        font-family: 'Inter';
+    }
+
+    /* Background colors */
+    .cards .red {
+        background-color: #ffd5e0;
+    }
+
+    .cards .blue {
+        background-color: #c5ecff;
+    }
+
+    .cards .green {
+        background-color: #cff5d1;
+    }
+
+    /* Text styling */
+    .cards .card p.tip {
+        font-size: 1.2em;
+        font-weight: 700;
+        margin: 0;
+        color: black;
+    }
+
+    .cards .card h1 {
+        font-size: 3.5em; /* Slightly larger text */
+        font-weight: 700;
+        margin-top: 5px;
+        font-family: 'Inter';
+        color: black;
+    }
+
+    /* Hover effect */
+    .cards .card:hover {
+        transform: scale(1.1, 1.1);
+    }
+
+    .cards:hover > .card:not(:hover) {
+        transform: scale(0.9, 0.9);
+    }
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #E8F8F5;
+}
+
+.message1, .message2 {
+    font-family: "Lexend", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.message1 {
+    padding-top: 50px;
+}

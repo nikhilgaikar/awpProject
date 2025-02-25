@@ -1,0 +1,108 @@
+﻿﻿body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to right top, #167d7f, #3e938f, #5da99f, #7ac0b0, #98d7c2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    color: white;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    height: 100%;
+}
+
+.window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 450px;
+    background-color: #adf1e738;
+    border-radius: 3%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+}
+
+.heading1 {
+    font-size: 100px;
+    margin-bottom: 0;
+}
+
+.heading2 {
+    margin-top: 0;
+    font-size: 30px;
+    font-weight: 100;
+    padding-left: 77px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin: 10px;
+    font-family: 'Inter', sans-serif !important;
+    width: 40%;
+    min-width: 150px;
+    max-width: 200px;
+    display: inline-block;
+    text-align: center;
+}
+
+.signup-btn {
+    background-color: #5acc5e;
+    color: white;
+}
+
+.login-btn {
+    background-color: #12bff9;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+h3 {
+    font-size: large;
+    font-weight: 325;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+    width: 100%;
+}
