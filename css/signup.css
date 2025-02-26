@@ -1,0 +1,112 @@
+﻿body {
+    background-image: linear-gradient(to right top, #167d7f, #3e938f, #5da99f, #7ac0b0, #98d7c2);
+    font-family: 'Inter', sans-serif;
+}
+
+.sign-up-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sign-up-form {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+    .input-container input {
+        width: 88%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .signup-btn:hover {
+        background: #0056b3;
+    }
+
+.login-link {
+    margin-top: 10px;
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .login-link:hover {
+        text-decoration: underline;
+    }
+
+.header {
+    background: #ffffff;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 15px;
+    padding-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    gap: 10px; /* Adds spacing between logo and text */
+}
+
+    .logo img {
+        height: 40px;
+    }
+
+    .logo span {
+        font-size: 1.8rem; /* Bigger text */
+        font-weight: bold; /* Bold text */
+        color: #343a40; /* Dark color for better visibility */
+        letter-spacing: 1px; /* Slight spacing for better look */
+    }

@@ -33,13 +33,22 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.TextBox taskDescription;
 
         /// <summary>
+        /// dueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dueDate;
+
+        /// <summary>
         /// category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox category;
+        protected global::System.Web.UI.WebControls.DropDownList category;
 
         /// <summary>
         /// priority control.
@@ -51,31 +60,13 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.DropDownList priority;
 
         /// <summary>
-        /// dueDate control.
+        /// AddTask control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dueDate;
-
-        /// <summary>
-        /// addTask control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addTask;
-
-        /// <summary>
-        /// filterStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList filterStatus;
+        protected global::System.Web.UI.WebControls.Button AddTask;
 
         /// <summary>
         /// GridView control.

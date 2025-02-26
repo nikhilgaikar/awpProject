@@ -6,97 +6,17 @@
 <head runat="server">
     <title>Login Page</title>
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-    <style>
-        body {
-            background-image: linear-gradient(to right, #B8E0D2, #E8F6F3);
-            font-family: 'Inter', sans-serif;
-        }
-        .log-in-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .log-in-form {
-            width: 450px; /* Increased width */
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #f8f9fa;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            text-align: center;
-        }
-        .input-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .log-in-form input {
-            width: 90%;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-        .log-in-form h2 {
-            text-align: center;
-            width: 100%;
-        }
-        .error-star {
-            color: red;
-            font-weight: bold;
-            margin-left: 5px;
-        }
-        .header {
-            background: #ffffff;
-            color: #343a40;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ddd;
-            border-radius: 15px;
-            padding-top: 10px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center; /* Ensures vertical alignment */
-            gap: 10px; /* Adds spacing between logo and text */
-        }
-
-        .logo img {
-            height: 40px;
-        }
-
-        .logo span {
-            font-size: 1.8rem;  /* Bigger text */
-            font-weight: bold;  /* Bold text */
-            color: #343a40;     /* Dark color for better visibility */
-            letter-spacing: 1px; /* Slight spacing for better look */
-        }
-    </style>
+    <link href="css/login.css" rel="stylesheet" />
 </head>
 <body>
         <!-- Header -->
     <header class="header">
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo" height="40"/>
-            <span>taskflow ™</span>
-        </div>
+        <a style="text-decoration:none" href="homepage.aspx">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" height="40">
+                <span>taskflow ™</span>
+            </div>
+        </a>
     </header>
     <form id="form1" runat="server">
         <div class="log-in-container">

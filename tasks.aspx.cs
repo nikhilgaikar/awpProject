@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,7 +15,20 @@ namespace awpProject
         {
             if (!IsPostBack)
             {
+                UpdateOverdueTasks(); // Mark overdue tasks
                 LoadTasks();
+            }
+        }
+
+        private void UpdateOverdueTasks()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Tasks SET Status = 'Overdue' WHERE Status = 'Pending' AND DueDate < CAST(GETDATE() AS DATE)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -43,8 +53,8 @@ namespace awpProject
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Tasks (TaskName, Description, DueDate, Category, Priority, Status, UserID, CreatedAt, IsCompleted) " +
-                               "VALUES (@TaskName, @Description, @DueDate, @Category, @Priority, 'Pending', @UserID, GETDATE(), 0)";
+                string query = "INSERT INTO Tasks (TaskName, Description, DueDate, Category, Priority, Status, UserID, CreatedAt) " +
+                               "VALUES (@TaskName, @Description, @DueDate, @Category, @Priority, 'Pending', @UserID, GETDATE())";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@TaskName", taskName.Text);
@@ -59,6 +69,7 @@ namespace awpProject
             }
 
             ClearFields();
+            UpdateOverdueTasks(); 
             LoadTasks();
         }
 
@@ -81,7 +92,7 @@ namespace awpProject
 
             string name = (row.FindControl("taskNameEdit") as TextBox).Text;
             string description = (row.FindControl("taskDescriptionEdit") as TextBox).Text;
-            string category = (row.FindControl("categoryEdit") as TextBox).Text;
+            string category = (row.FindControl("categoryEdit") as DropDownList).SelectedValue;
             string priority = (row.FindControl("priorityEdit") as DropDownList).SelectedValue;
             string dueDate = (row.FindControl("dueDateEdit") as TextBox).Text;
 
@@ -104,6 +115,7 @@ namespace awpProject
             }
 
             GridView.EditIndex = -1;
+            UpdateOverdueTasks();
             LoadTasks();
         }
 
@@ -125,6 +137,26 @@ namespace awpProject
             LoadTasks();
         }
 
+        protected void MarkAsCompleted(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+            int taskId = Convert.ToInt32(GridView.DataKeys[row.RowIndex].Values[0]);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Tasks SET Status = 'Completed' WHERE TaskID = @TaskID AND UserID = @UserID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@TaskID", taskId);
+                cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadTasks();
+        }
+
         private void ClearFields()
         {
             taskName.Text = "";
@@ -132,7 +164,5 @@ namespace awpProject
             category.Text = "";
             dueDate.Text = "";
         }
-
-        
     }
 }

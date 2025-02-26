@@ -130,12 +130,12 @@
                 <a class="nav-link" href="Tasks.aspx">
                     <i class="bi bi-list-task"></i> <span>Tasks</span>
                 </a>
-                <a class="nav-link" href="Progress.aspx">
-                    <i class="bi bi-graph-up"></i> <span>Progress</span>
-                </a>
                 <a class="nav-link" href="Streaks.aspx">
                     <i class="bi bi-lightning"></i> <span>Streaks</span>
                 </a>
+                <a class="nav-link" href="Progress.aspx">
+                    <i class="bi bi-graph-up"></i> <span>Progress</span>
+                </a>               
                 <a class="nav-link" href="Notifications.aspx">
                     <i class="bi bi-bell"></i> <span>Notifications</span>
                 </a>
@@ -146,17 +146,19 @@
         <div class="main-content">
             <!-- Header -->
             <header class="header">
-                <div class="logo">
-                    <img src="images/logo.png" alt="Logo" height="40">
-                    <span>taskflow ™</span>
-                </div>
-                            <div class="user-menu dropdown">
+                <a style="text-decoration:none" href="dashboard.aspx">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="Logo" height="40">
+                        <span>taskflow ™</span>
+                    </div>
+                </a>
+            <div class="user-menu dropdown">
                 <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
                     <img src="images/profile.jpg" alt="User" class="rounded-circle" width="30">
                     <asp:Label ID="lblUsername" runat="server" Text=""></asp:Label>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-item" OnClick="Logout_Click">Logout</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="Logout" runat="server" CssClass="dropdown-item" OnClick="Logout_Click">Logout</asp:LinkButton></li>
                 </ul>
 
             </div>

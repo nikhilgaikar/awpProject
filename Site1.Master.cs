@@ -28,8 +28,6 @@ namespace awpProject
             
             Session.Clear(); 
             Session.Abandon();
-
-
             Response.Redirect("homepage.aspx");
         }
 
