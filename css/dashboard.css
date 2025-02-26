@@ -1,39 +1,39 @@
-﻿﻿ /* Center content and ensure cards stay responsive */
+﻿
 .dashboard-container {
     display: flex;
-    justify-content: center; /* Centers the cards */
+    justify-content: center; 
     width: 100%;
 }
 
-/* Main cards container */
+
 .cards {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on small screens */
-    justify-content: center; /* Centers the cards */
-    gap: 20px; /* Adds space between the cards */
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px; 
     max-width: 100%;
     width: 100%;
-    padding-top: 85px;
+
 }
 
-    /* Increase card size */
+    
     .cards .card {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         text-align: center;
-        height: 150px; /* Increased height */
-        width: 300px; /* Increased width */
-        border-radius: 15px;
+        height: 150px; 
+        width: 300px; 
+        border-radius: 25px;
         color: black;
         cursor: pointer;
-        transition: 400ms;
+        transition: 250ms;
         padding: 15px;
         font-family: 'Inter';
     }
 
-    /* Background colors */
+    
     .cards .red {
         background-color: #ffd5e0;
     }
@@ -46,7 +46,7 @@
         background-color: #cff5d1;
     }
 
-    /* Text styling */
+    
     .cards .card p.tip {
         font-size: 1.2em;
         font-weight: 700;
@@ -55,7 +55,7 @@
     }
 
     .cards .card h1 {
-        font-size: 3.5em; /* Slightly larger text */
+        font-size: 3.5em; 
         font-weight: 700;
         margin-top: 5px;
         font-family: 'Inter';
@@ -82,7 +82,7 @@ body {
 .message1, .message2 {
     font-family: "Lexend", serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 450;
     font-style: normal;
 }
 

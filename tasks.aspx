@@ -10,8 +10,19 @@
             <h2 class="mb-3">Task Management</h2>
 
             <!-- Task Input Form -->
-                <div class="card p-3 mb-4">
-                    <h5>Add New Task</h5>
+            <div class="card mb-4 customcard">
+                    <div class="card-header">
+                        <span>Add New Task</span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary float-end" onclick="minimize()">Minimize</button>
+                    </div>
+                <script>
+                    function minimize() {
+                        var form = document.getElementById("taskForm");
+                        form.style.display = (form.style.display === "none") ? "block" : "none";
+                    }
+                </script>
+                <div class="card-body" id="taskForm">
+
                     <div class="row g-2">
                         <!-- Task Name -->
                         <div class="col-md-4">
@@ -55,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
             <!-- Tasks GridView -->
             <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered"
                 DataKeyNames="TaskID" OnRowEditing="GridView_RowEditing" OnRowCancelingEdit="GridView_RowCancelingEdit"
@@ -157,5 +168,5 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-        </div>
+        
         </asp:Content>
