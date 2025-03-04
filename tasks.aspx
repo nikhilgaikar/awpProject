@@ -67,6 +67,46 @@
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+    <div>
+        <label class="form-label">Filter by Category</label>
+        <asp:DropDownList ID="categoryFilter" runat="server" CssClass="form-select">
+            <asp:ListItem Text="All" Value="All" Selected="True"></asp:ListItem>
+            <asp:ListItem Text="📚 College" Value="College"></asp:ListItem>
+            <asp:ListItem Text="💼 Work" Value="Work"></asp:ListItem>
+            <asp:ListItem Text="🏡 Personal" Value="Personal"></asp:ListItem>
+        </asp:DropDownList>
+    </div>
+
+    <div>
+        <label class="form-label">Filter by Priority</label>
+        <asp:DropDownList ID="priorityFilter" runat="server" CssClass="form-select">
+            <asp:ListItem Text="All" Value="All" Selected="True"></asp:ListItem>
+            <asp:ListItem Text="High 🔥" Value="High"></asp:ListItem>
+            <asp:ListItem Text="Medium ⚡" Value="Medium"></asp:ListItem>
+            <asp:ListItem Text="Low 🌱" Value="Low"></asp:ListItem>
+        </asp:DropDownList>
+    </div>
+
+    <div>
+        <label class="form-label">Filter by Status</label>
+        <asp:DropDownList ID="statusFilter" runat="server" CssClass="form-select">
+            <asp:ListItem Text="All" Value="All" Selected="True"></asp:ListItem>
+            <asp:ListItem Text="✅ Completed" Value="Completed"></asp:ListItem>
+            <asp:ListItem Text="🕒 Pending" Value="Pending"></asp:ListItem>
+            <asp:ListItem Text="❗ Overdue" Value="Overdue"></asp:ListItem>
+        </asp:DropDownList>
+    </div>
+
+    <div class="mt-4">
+        <asp:Button ID="applyFilterButton" runat="server" Text="Apply Filter" CssClass="btn btn-primary px-4"
+            OnClick="applyFilterButton_Click" />
+    </div>
+</div>
+
+
+
             <!-- Tasks GridView -->
             <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered"
                 DataKeyNames="TaskID" OnRowEditing="GridView_RowEditing" OnRowCancelingEdit="GridView_RowCancelingEdit"

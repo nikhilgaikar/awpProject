@@ -69,6 +69,42 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.Button AddTask;
 
         /// <summary>
+        /// categoryFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList categoryFilter;
+
+        /// <summary>
+        /// priorityFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList priorityFilter;
+
+        /// <summary>
+        /// statusFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList statusFilter;
+
+        /// <summary>
+        /// applyFilterButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button applyFilterButton;
+
+        /// <summary>
         /// GridView control.
         /// </summary>
         /// <remarks>

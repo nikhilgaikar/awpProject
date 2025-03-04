@@ -32,13 +32,39 @@ namespace awpProject
             }
         }
 
-        private void LoadTasks()
+        protected void applyFilterButton_Click(object sender, EventArgs e)
+        {
+            string category = categoryFilter.SelectedValue;
+            string priority = priorityFilter.SelectedValue;
+            string status = statusFilter.SelectedValue;
+
+            LoadTasks(category, priority, status);
+        }
+        private void LoadTasks(string category = "All", string priority = "All", string status = "All")
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Base Query
                 string query = "SELECT TaskID, TaskName, Description, Category, Priority, FORMAT(DueDate, 'dd/MM/yyyy') AS DueDate, Status FROM Tasks WHERE UserID = @UserID";
+
+                // Dynamically add filters
+                if (category != "All")
+                    query += " AND Category = @Category";
+                if (priority != "All")
+                    query += " AND Priority = @Priority";
+                if (status != "All")
+                    query += " AND Status = @Status";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
+
+                // Add filter parameters only if a filter is applied
+                if (category != "All")
+                    cmd.Parameters.AddWithValue("@Category", category);
+                if (priority != "All")
+                    cmd.Parameters.AddWithValue("@Priority", priority);
+                if (status != "All")
+                    cmd.Parameters.AddWithValue("@Status", status);
 
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -48,6 +74,7 @@ namespace awpProject
                 GridView.DataBind();
             }
         }
+
 
         protected void AddTask_Click(object sender, EventArgs e)
         {
@@ -69,7 +96,7 @@ namespace awpProject
             }
 
             ClearFields();
-            UpdateOverdueTasks(); 
+            UpdateOverdueTasks();
             LoadTasks();
         }
 
