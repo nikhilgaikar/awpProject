@@ -89,3 +89,44 @@ body {
 .message1 {
     padding-top: 50px;
 }
+
+
+
+/* Existing Task Cards (Unchanged) */
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 150px;
+    width: 300px;
+    border-radius: 25px;
+    color: black;
+    cursor: pointer;
+    transition: 250ms;
+    padding: 15px;
+    font-family: 'Inter';
+    text-decoration: none;
+}
+
+/* Task Card Colors */
+.cards .red {
+    background-color: #ffd5e0;
+}
+
+.cards .blue {
+    background-color: #c5ecff;
+}
+
+.cards .green {
+    background-color: #cff5d1;
+}
+.card  {
+    transition: transform 0.3s ease; 
+}
+
+
+.card:hover {
+    transform: scale(1.1,1.1); /* Scale up the card on hover */
+}

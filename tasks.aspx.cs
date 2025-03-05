@@ -15,7 +15,11 @@ namespace awpProject
         {
             if (!IsPostBack)
             {
-                UpdateOverdueTasks(); // Mark overdue tasks
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("login.aspx");
+                }
+                UpdateOverdueTasks(); 
                 LoadTasks();
             }
         }
@@ -44,10 +48,10 @@ namespace awpProject
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                // Base Query
+                
                 string query = "SELECT TaskID, TaskName, Description, Category, Priority, FORMAT(DueDate, 'dd/MM/yyyy') AS DueDate, Status FROM Tasks WHERE UserID = @UserID";
 
-                // Dynamically add filters
+                
                 if (category != "All")
                     query += " AND Category = @Category";
                 if (priority != "All")
@@ -58,7 +62,7 @@ namespace awpProject
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
-                // Add filter parameters only if a filter is applied
+                
                 if (category != "All")
                     cmd.Parameters.AddWithValue("@Category", category);
                 if (priority != "All")

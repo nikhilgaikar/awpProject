@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.UI.WebControls;
 
 namespace awpProject
 {
@@ -11,6 +12,10 @@ namespace awpProject
         {
             if (!IsPostBack)
             {
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("login.aspx");
+                }
                 LoadStreaks();
             }
         }
@@ -18,11 +23,7 @@ namespace awpProject
         private void LoadStreaks()
         {
             string userId = Session["UserID"]?.ToString();
-            if (string.IsNullOrEmpty(userId))
-            {
-                Response.Redirect("login.aspx"); // Redirect if not logged in
-                return;
-            }
+           
 
             string query = @"
                 SELECT StreakID, StreakName, Description, GoalDate, StreakCount, 
@@ -46,11 +47,7 @@ namespace awpProject
         protected void btnCreateStreak_Click(object sender, EventArgs e)
         {
             string userId = Session["UserID"]?.ToString();
-            if (string.IsNullOrEmpty(userId))
-            {
-                Response.Redirect("login.aspx");
-                return;
-            }
+            
 
             string query = @"
                 INSERT INTO Streaks (UserID, StreakName, Description, GoalDate, StreakCount, LastUpdated)
@@ -75,59 +72,39 @@ namespace awpProject
         protected void btnContribute_Click(object sender, EventArgs e)
         {
             string userId = Session["UserID"]?.ToString();
-            if (string.IsNullOrEmpty(userId))
-            {
-                Response.Redirect("login.aspx");
-                return;
-            }
+            
 
-            int streakId = Convert.ToInt32((sender as System.Web.UI.WebControls.Button).CommandArgument);
-
+            Button btn = (Button)sender;
+            int streakId = Convert.ToInt32(btn.CommandArgument);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["TaskManagementDB"].ConnectionString))
             {
                 conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
 
-                try
+                // Check if the last contribution was today
+                string checkQuery = @"SELECT * FROM Streaks WHERE StreakID = @StreakID AND UserID = @UserID 
+                                    AND DATEDIFF(DAY, LastUpdated, GETDATE()) = 0";
+
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                 {
-                    // Check last update date to prevent duplicate contributions in one day
-                    string checkQuery = "SELECT LastUpdated FROM Streaks WHERE StreakID = @StreakID AND UserID = @UserID";
-                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn, transaction))
+                    checkCmd.Parameters.AddWithValue("@StreakID", streakId);
+                    checkCmd.Parameters.AddWithValue("@UserID", userId);
+
+                    object result = checkCmd.ExecuteScalar(); // Will return some value if a row exists
+
+                    if (result != null) // If a row exists, LastUpdated is today
                     {
-                        checkCmd.Parameters.AddWithValue("@StreakID", streakId);
-                        checkCmd.Parameters.AddWithValue("@UserID", userId);
-                        object lastUpdated = checkCmd.ExecuteScalar();
-
-                        if (lastUpdated != DBNull.Value && Convert.ToDateTime(lastUpdated).Date == DateTime.Today)
-                        {
-                            transaction.Rollback();
-                            return; // Already contributed today
-                        }
+                        return; // Already updated today
                     }
-
-                    // Update streak count and last updated date
-                    string updateQuery = "UPDATE Streaks SET StreakCount = StreakCount + 1, LastUpdated = GETDATE() WHERE StreakID = @StreakID AND UserID = @UserID";
-                    using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn, transaction))
-                    {
-                        updateCmd.Parameters.AddWithValue("@StreakID", streakId);
-                        updateCmd.Parameters.AddWithValue("@UserID", userId);
-                        updateCmd.ExecuteNonQuery();
-                    }
-
-                    // Insert into streak logs
-                    string insertLogQuery = "INSERT INTO StreakLogs (StreakID, UserID, ContributionDate) VALUES (@StreakID, @UserID, GETDATE())";
-                    using (SqlCommand logCmd = new SqlCommand(insertLogQuery, conn, transaction))
-                    {
-                        logCmd.Parameters.AddWithValue("@StreakID", streakId);
-                        logCmd.Parameters.AddWithValue("@UserID", userId);
-                        logCmd.ExecuteNonQuery();
-                    }
-
-                    transaction.Commit();
                 }
-                catch
+
+
+                // Update streak count and last updated date
+                string updateQuery = "UPDATE Streaks SET StreakCount = StreakCount + 1, LastUpdated = CONVERT(DATE, GETDATE()) WHERE StreakID = @StreakID AND UserID = @UserID";
+                using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
                 {
-                    transaction.Rollback();
+                    updateCmd.Parameters.AddWithValue("@StreakID", streakId);
+                    updateCmd.Parameters.AddWithValue("@UserID", userId);
+                    updateCmd.ExecuteNonQuery();
                 }
             }
 
@@ -137,43 +114,22 @@ namespace awpProject
         protected void btnDeleteStreak_Click(object sender, EventArgs e)
         {
             string userId = Session["UserID"]?.ToString();
-            if (string.IsNullOrEmpty(userId))
-            {
-                Response.Redirect("login.aspx");
-                return;
-            }
+            
 
-            int streakId = Convert.ToInt32((sender as System.Web.UI.WebControls.Button).CommandArgument);
-
+            Button btn = (Button)sender;
+            int streakId = Convert.ToInt32(btn.CommandArgument);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["TaskManagementDB"].ConnectionString))
             {
                 conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
 
-                try
+
+                
+                string deleteQuery = "DELETE FROM Streaks WHERE StreakID = @StreakID AND UserID = @UserID";
+                using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
                 {
-                    // Delete streak logs first
-                    string deleteLogsQuery = "DELETE FROM StreakLogs WHERE StreakID = @StreakID";
-                    using (SqlCommand cmd = new SqlCommand(deleteLogsQuery, conn, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@StreakID", streakId);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // Delete streak
-                    string deleteStreakQuery = "DELETE FROM Streaks WHERE StreakID = @StreakID AND UserID = @UserID";
-                    using (SqlCommand cmd = new SqlCommand(deleteStreakQuery, conn, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@StreakID", streakId);
-                        cmd.Parameters.AddWithValue("@UserID", userId);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
+                    cmd.Parameters.AddWithValue("@StreakID", streakId);
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    cmd.ExecuteNonQuery();
                 }
             }
 

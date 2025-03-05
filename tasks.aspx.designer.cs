@@ -15,6 +15,15 @@ namespace awpProject
     {
 
         /// <summary>
+        /// lbltaskName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltaskName;
+
+        /// <summary>
         /// taskName control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace awpProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox taskName;
+
+        /// <summary>
+        /// lbltaskDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltaskDescription;
 
         /// <summary>
         /// taskDescription control.
@@ -33,6 +51,15 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.TextBox taskDescription;
 
         /// <summary>
+        /// lbldueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldueDate;
+
+        /// <summary>
         /// dueDate control.
         /// </summary>
         /// <remarks>
@@ -42,6 +69,15 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.TextBox dueDate;
 
         /// <summary>
+        /// lblcategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcategory;
+
+        /// <summary>
         /// category control.
         /// </summary>
         /// <remarks>
@@ -49,6 +85,15 @@ namespace awpProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList category;
+
+        /// <summary>
+        /// lblpriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpriority;
 
         /// <summary>
         /// priority control.

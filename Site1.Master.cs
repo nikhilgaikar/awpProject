@@ -15,11 +15,11 @@ namespace awpProject
             {
                 if (Session["Username"] != null)
                 {
-                    lblUsername.Text = Session["Username"].ToString(); // Set username from session
+                    lblUsername.Text = Session["Username"].ToString(); 
                 }
                 else
                 {
-                    lblUsername.Text = "Guest"; // Default text if no session exists
+                    lblUsername.Text = "Guest"; 
                 }
             }
         }

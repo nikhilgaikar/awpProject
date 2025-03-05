@@ -21,106 +21,15 @@
     <!-- Sidebar CSS -->
     <link href="css/sidebar.css" rel="stylesheet" type="text/css" />
     
-    <style>
-         {
-            font-family: 'Inter', sans-serif !important;
-        }
-
-        /*/* Main content area */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; 
-            margin-left: 250px;
-            transition: margin-left 0.3s ease-in-out;
-            padding: 20px;
-        }
-
-        .collapsed + .main-content {
-            margin-left: 70px;
-        }
-
-        .content-wrapper {
-            flex-grow: 1;
-            overflow-y: auto; 
-        }
-
-        /* Scrollable task list */
-        .task-container {
-            max-height: calc(100vh - 200px); /* Prevents overlapping with footer */
-            overflow-y: auto;
-            padding-bottom: 10px;
-        }
-
-        /* Header */
-        .header {
-            background: #ffffff;
-            color: #343a40;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ddd;
-            border-radius: 15px;
-            padding-top: 10px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center; 
-            gap: 10px; 
-        }
-
-        .logo img {
-            height: 40px;
-        }
-
-        .logo span {
-            font-size: 1.8rem;  
-            font-weight: bold;  
-            color: #343a40;     
-            letter-spacing: 1px; 
-        }
-
-        /* Footer */
-        .footer {
-            position: relative; 
-            width: 100%;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            padding: 10px;
-            margin-top: auto; 
-        }
-
-        /* Sidebar with gradient background */
-        #sidebar {
-            background-color: #1d8f93;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        #sidebar span {
-            color:white;
-        }
-        #sidebar .nav-link i {
-            color: white !important;
-        }
-        /* Highlight active page */
-        .nav-link.active-link {
-            background: #252e2f89 !important; 
-            color: #ffffff !important; 
-            border-radius: 5px;
-            font-weight: bold !important; 
-        }
-
-    </style>
+    <!-- Master page CSS -->
+    <link href="css/master.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
      <form runat="server">
+
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar d-flex flex-column">
             <button id="toggleSidebar" class="btn btn-light mt-2 ms-2" type="button">☰</button><br />
@@ -141,9 +50,10 @@
             </nav>
         </div>
 
-        <!-- Main Content -->
+  
         <div class="main-content">
-            <!-- Header -->
+            
+
             <header class="header">
                 <a style="text-decoration:none" href="dashboard.aspx">
                     <div class="logo">
@@ -164,12 +74,12 @@
 
             </header>
 
-            <!-- Content Placeholder -->
+            
             <div class="content-wrapper">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
             </div>
 
-            <!-- Footer -->
+            
             <footer class="footer">
                 © 2025 taskflow (Task Management System). All Rights Reserved.
             </footer>
@@ -182,7 +92,7 @@
 
     <script>
 
-        //collapsible feature for sidebar
+        //sidebar toggle
         $(document).ready(function () {
             $("#toggleSidebar").click(function () {
                 $("#sidebar").toggleClass("collapsed");
@@ -190,7 +100,7 @@
             });
         });
 
-        //Highlight active page
+        //highlights active page
         $(".nav-link").each(function () {
             if (this.href === window.location.href) {
                 $(this).addClass("active-link");

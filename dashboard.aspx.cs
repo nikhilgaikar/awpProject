@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -21,10 +19,11 @@ namespace awpProject
                 }
                 else
                 {
-                    Response.Redirect("homepage.aspx"); 
+                    Response.Redirect("homepage.aspx");
                 }
 
                 LoadTaskCounts();
+                LoadRecentStreaks(); 
             }
         }
 
@@ -43,7 +42,6 @@ namespace awpProject
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Get the logged-in user's ID (assuming it's stored in Session)
                     int userId = Convert.ToInt32(Session["UserID"]);
                     cmd.Parameters.AddWithValue("@UserID", userId);
 
@@ -57,8 +55,36 @@ namespace awpProject
                     reader.Close();
                 }
             }
-
         }
 
+        private void LoadRecentStreaks()
+        {
+            string userId = Session["UserID"]?.ToString();
+            if (string.IsNullOrEmpty(userId))
+            {
+                Response.Redirect("homepage.aspx");
+                return;
+            }
+
+            string query = @"SELECT TOP 3 StreakName, Description, GoalDate, StreakCount, 
+             DATEDIFF(DAY, GETDATE(), GoalDate) AS DaysLeft, LastUpdated 
+             FROM Streaks WHERE UserID = @UserID ORDER BY LastUpdated DESC"; 
+
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["TaskManagementDB"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+
+            rptRecentStreaks.DataSource = dt;
+            rptRecentStreaks.DataBind();
+        }
     }
 }

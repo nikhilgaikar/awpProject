@@ -69,8 +69,10 @@
     <Content Include="css\sidebar.css" />
     <Content Include="css\signup.css" />
     <Content Include="css\login.css" />
+    <Content Include="css\master.css" />
     <Content Include="dashboard.aspx" />
     <Content Include="images\logo.png" />
+    <Content Include="images\logo1.png" />
     <Content Include="images\profile.jpg" />
     <Content Include="Web.config" />
     <Content Include="homepage.aspx" />
@@ -78,6 +80,7 @@
     <Content Include="login.aspx" />
     <Content Include="tasks.aspx" />
     <Content Include="streaks.aspx" />
+    <Content Include="progress.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dashboard.aspx.cs">
@@ -129,6 +132,13 @@
     </Compile>
     <Compile Include="streaks.aspx.designer.cs">
       <DependentUpon>streaks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="progress.aspx.cs">
+      <DependentUpon>progress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="progress.aspx.designer.cs">
+      <DependentUpon>progress.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

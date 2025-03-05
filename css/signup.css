@@ -96,8 +96,8 @@
 
 .logo {
     display: flex;
-    align-items: center; /* Ensures vertical alignment */
-    gap: 10px; /* Adds spacing between logo and text */
+    align-items: center;
+    gap: 10px; 
 }
 
     .logo img {
@@ -105,8 +105,8 @@
     }
 
     .logo span {
-        font-size: 1.8rem; /* Bigger text */
-        font-weight: bold; /* Bold text */
-        color: #343a40; /* Dark color for better visibility */
-        letter-spacing: 1px; /* Slight spacing for better look */
+        font-size: 1.8rem; 
+        font-weight: bold; 
+        color: #343a40; 
+        letter-spacing: 1px; 
     }
