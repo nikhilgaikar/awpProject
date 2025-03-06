@@ -15,6 +15,15 @@ namespace awpProject
     {
 
         /// <summary>
+        /// lblstreakName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblstreakName;
+
+        /// <summary>
         /// streakName control.
         /// </summary>
         /// <remarks>
@@ -24,6 +33,15 @@ namespace awpProject
         protected global::System.Web.UI.WebControls.TextBox streakName;
 
         /// <summary>
+        /// lblstreakDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblstreakDescription;
+
+        /// <summary>
         /// streakDescription control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace awpProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox streakDescription;
+
+        /// <summary>
+        /// lblgoalCompletionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblgoalCompletionDate;
 
         /// <summary>
         /// goalCompletionDate control.

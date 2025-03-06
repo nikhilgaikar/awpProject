@@ -13,14 +13,9 @@
             <div class="card mb-4 customcard">
                     <div class="card-header">
                         <span>Add New Task</span>
-                        <button type="button" class="btn btn-sm btn-outline-secondary float-end" onclick="minimize()">Minimize</button>
+                        
                     </div>
-                <script>
-                    function minimize() {
-                        var form = document.getElementById("taskForm");
-                        form.style.display = (form.style.display === "none") ? "block" : "none";
-                    }
-                </script>
+                
                 <div class="card-body" id="taskForm">
 
                     <div class="row g-2">

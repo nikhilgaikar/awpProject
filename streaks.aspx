@@ -9,15 +9,15 @@
                 <h5 class="card-title">Create a New Streak</h5>
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="streakName">Streak Name</label>
+                        <asp:Label ID="lblstreakName" runat="server">Streak Name</asp:Label>
                         <asp:TextBox ID="streakName" runat="server" CssClass="form-control" placeholder="e.g., Daily Reading"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
-                        <label for="streakDescription">Description</label>
+                        <asp:Label ID="lblstreakDescription" runat="server">Description</asp:Label>
                         <asp:TextBox ID="streakDescription" runat="server" CssClass="form-control" placeholder="Short description"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
-                        <label for="goalCompletionDate">Goal Completion Date</label>
+                        <asp:Label ID="lblgoalCompletionDate" runat="server">Goal Completion Date</asp:Label>
                         <asp:TextBox ID="goalCompletionDate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>

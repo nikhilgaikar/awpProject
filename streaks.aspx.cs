@@ -80,7 +80,7 @@ namespace awpProject
             {
                 conn.Open();
 
-                // Check if the last contribution was today
+               
                 string checkQuery = @"SELECT * FROM Streaks WHERE StreakID = @StreakID AND UserID = @UserID 
                                     AND DATEDIFF(DAY, LastUpdated, GETDATE()) = 0";
 
@@ -89,16 +89,15 @@ namespace awpProject
                     checkCmd.Parameters.AddWithValue("@StreakID", streakId);
                     checkCmd.Parameters.AddWithValue("@UserID", userId);
 
-                    object result = checkCmd.ExecuteScalar(); // Will return some value if a row exists
-
-                    if (result != null) // If a row exists, LastUpdated is today
+                    object result = checkCmd.ExecuteScalar(); 
+                    if (result != null) 
                     {
-                        return; // Already updated today
+                        return; 
                     }
                 }
 
 
-                // Update streak count and last updated date
+                
                 string updateQuery = "UPDATE Streaks SET StreakCount = StreakCount + 1, LastUpdated = CONVERT(DATE, GETDATE()) WHERE StreakID = @StreakID AND UserID = @UserID";
                 using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
                 {

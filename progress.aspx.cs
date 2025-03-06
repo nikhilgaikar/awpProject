@@ -31,11 +31,11 @@ namespace awpProject
             {
                 conn.Open();
 
-                // Get total tasks and completed tasks
+                
                 int totalTasks = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE UserID = {userId}");
                 int completedTasks = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE UserID = {userId} AND Status = 'Completed'");
 
-                // Get category-specific counts
+                
                 int totalCollege = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE Category = 'College' AND UserID = {userId}");
                 int completedCollege = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE Category = 'College' AND Status = 'Completed' AND UserID = {userId}");
 
@@ -45,19 +45,19 @@ namespace awpProject
                 int totalPersonal = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE Category = 'Personal' AND UserID = {userId}");
                 int completedPersonal = GetTaskCount(conn, $"SELECT COUNT(*) FROM Tasks WHERE Category = 'Personal' AND Status = 'Completed' AND UserID = {userId}");
 
-                // Calculate progress percentages
+               
                 int overallProgress = (totalTasks > 0) ? (completedTasks * 100) / totalTasks : 0;
                 int collegeProgress = (totalCollege > 0) ? (completedCollege * 100) / totalCollege : 0;
                 int workProgress = (totalWork > 0) ? (completedWork * 100) / totalWork : 0;
                 int personalProgress = (totalPersonal > 0) ? (completedPersonal * 100) / totalPersonal : 0;
 
-                // Set labels
+                
                 lblOverallProgress.Text = overallProgress + "%";
                 lblCollegeProgress.Text = collegeProgress + "%";
                 lblWorkProgress.Text = workProgress + "%";
                 lblPersonalProgress.Text = personalProgress + "%";
 
-                // Set progress bars directly
+                
                 progressOverall.Attributes["style"] = $"width: {overallProgress}%";
                 progressCollege.Attributes["style"] = $"width: {collegeProgress}%";
                 progressWork.Attributes["style"] = $"width: {workProgress}%";

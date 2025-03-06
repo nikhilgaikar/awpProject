@@ -100,12 +100,6 @@
             });
         });
 
-        //highlights active page
-        $(".nav-link").each(function () {
-            if (this.href === window.location.href) {
-                $(this).addClass("active-link");
-            }
-        });
     </script>
 </body>
 </html>
